@@ -80,7 +80,7 @@ type SinglePost = {
 
 const GET_POSTS_QUERY = gql`
   query getAllPosts {
-    posts(first: 16, where: { orderby: { field: DATE, order: DESC } }) {
+    posts(first: 100, where: { orderby: { field: DATE, order: DESC } }) {
       nodes {
         date
         excerpt(format: RENDERED)
@@ -184,9 +184,7 @@ export default async function BlogPostPage({
         altText={"Eco orbit blog post"}
         content={post.content ? post.content : "No Content"}
         excerpt={post.excerpt ? post.excerpt : ""}
-        sourceUrl={
-          "https://supabase.hushupidda.com/storage/v1/object/public/upload-test/1729576799834_banner.png"
-        }
+        sourceUrl={process.env.EXTRA_IMAGE!}
         title={post.title}
         modified={post.modified}
       />
@@ -206,7 +204,7 @@ export default async function BlogPostPage({
             sourceUrl={
               largestImage.sourceUrl
                 ? largestImage.sourceUrl
-                : "https://supabase.hushupidda.com/storage/v1/object/public/upload-test/1729576799834_banner.png"
+                : process.env.EXTRA_IMAGE!
             }
             title={post.title}
             modified={post.modified}

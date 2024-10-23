@@ -5,7 +5,7 @@ import { unstable_cache } from "next/cache";
 
 const GET_ITEMS_QUERY = gql`
   query getAllPosts {
-    posts(first: 16, where: { orderby: { field: DATE, order: DESC } }) {
+    posts(first: 100, where: { orderby: { field: DATE, order: DESC } }) {
       nodes {
         date
         excerpt(format: RENDERED)
